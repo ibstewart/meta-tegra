@@ -343,7 +343,12 @@ custinfo_args=
 if [ -f "$custinfo_out" ]; then
     custinfo_args="--cust_info $custinfo_out"
 fi
-bctargs="$UPHY_CONFIG $MINRATCHET_CONFIG \
+
+if [ -n "$WB0SDRAM_BCT" ]; then
+    WB0SDRAM_CONFIG="--wb0sdram_config $WB0SDRAM_BCT"
+fi
+
+bctargs="$UPHY_CONFIG $MINRATCHET_CONFIG $WB0SDRAM_CONFIG \
          --device_config $DEVICE_CONFIG \
          --misc_config $MISC_CONFIG \
          --scr_config $SCR_CONFIG \
@@ -355,7 +360,6 @@ bctargs="$UPHY_CONFIG $MINRATCHET_CONFIG \
          --br_cmd_config $BR_CMD_CONFIG \
          --dev_params $DEV_PARAMS,$DEV_PARAMS_B \
          --deviceprod_config $DEVICEPROD_CONFIG \
-         --wb0sdram_config $WB0SDRAM_BCT \
          --mb2bct_cfg $MB2BCT_CFG \
          --bldtb $BLDTB \
          --concat_cpubl_bldtb \
