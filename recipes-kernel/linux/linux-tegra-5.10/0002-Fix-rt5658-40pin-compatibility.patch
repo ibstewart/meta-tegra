@@ -1,0 +1,25 @@
+From 2b2d14a315934e638e7fa3d2370eaac38f010b3b Mon Sep 17 00:00:00 2001
+From: Ian Stewart <istewart@nvidia.com>
+Date: Mon, 22 Aug 2022 09:59:43 -0600
+Subject: [PATCH 2/2] Fix rt5658-40pin compatibility
+
+---
+ .../kernel-dts/tegra234-p3737-audio-codec-rt5658-40pin.dts      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nvidia/platform/t23x/concord/kernel-dts/tegra234-p3737-audio-codec-rt5658-40pin.dts b/nvidia/platform/t23x/concord/kernel-dts/tegra234-p3737-audio-codec-rt5658-40pin.dts
+index 36aeb25fb274..1709e058dbb2 100644
+--- a/nvidia/platform/t23x/concord/kernel-dts/tegra234-p3737-audio-codec-rt5658-40pin.dts
++++ b/nvidia/platform/t23x/concord/kernel-dts/tegra234-p3737-audio-codec-rt5658-40pin.dts
+@@ -15,7 +15,7 @@
+ / {
+ 	overlay-name = "Jetson Concord (40Pin RT5658)";
+ 	jetson-header-name = "Jetson 40Pin RT5658 Audio Codec";
+-	compatible = "nvidia,p3737-0000+p3701-0000";
++	compatible = "nvidia,tegra23x";
+ 	nvidia,dtsfilename = __FILE__;
+ 	nvidia,dtbbuildtime = __DATE__, __TIME__;
+ 
+-- 
+2.17.1
+

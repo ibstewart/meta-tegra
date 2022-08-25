@@ -29,6 +29,8 @@ SRC_URI = "git://${KERNEL_REPO};name=machine;branch=${KBRANCH} \
            ${@'file://disable-fw-user-helper.cfg' if d.getVar('KERNEL_DISABLE_FW_USER_HELPER') == 'y' else ''} \
            ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'file://systemd.cfg', '', d)} \
 	   file://spiflash.cfg \
+           file://0001-Add-nvidia-platform-t23x-mandalore-kernel-dts.patch \
+           file://0002-Fix-rt5658-40pin-compatibility.patch \
 "
 
 PATH:prepend = "${STAGING_BINDIR_NATIVE}/kern-tools-tegra:"
