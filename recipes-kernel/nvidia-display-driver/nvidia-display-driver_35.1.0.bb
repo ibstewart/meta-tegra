@@ -10,7 +10,10 @@ require recipes-bsp/tegra-sources/tegra-sources-35.1.0.inc
 
 COMPATIBLE_MACHINE = "(tegra234)"
 
-SRC_URI += "file://0001-arm64-set-mno-outline-atomics-and-fno-stack-protecto.patch"
+SRC_URI += " \
+    file://0001-arm64-set-mno-outline-atomics-and-fno-stack-protecto.patch \
+    file://nvidia.conf \
+"
 
 S = "${WORKDIR}/NVIDIA-kernel-module-source-TempVersion"
 B = "${S}"
@@ -34,6 +37,11 @@ EXTRA_OEMAKE += " \
 do_compile() {
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
     oe_runmake CC="${KERNEL_CC}" LD="${KERNEL_LD}" AR="${KERNEL_AR}" modules
+}
+
+do_install:append() {
+    install -m 0644 -D ${WORKDIR}/nvidia.conf ${D}${sysconfdir}/modprobe.d/nvidia.conf
+    install -m 0644 -D ${S}/kernel-open/nvidia/nv-p2p.h ${D}${includedir}/nvidia/nv-p2p.h
 }
 
 RPROVIDES:${PN} += " \
