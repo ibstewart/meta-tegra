@@ -31,6 +31,7 @@ SRC_URI = "git://${KERNEL_REPO};name=machine;branch=${KBRANCH} \
 	   file://spiflash.cfg \
            file://0001-Add-nvidia-platform-t23x-mandalore-kernel-dts.patch \
            file://0002-Fix-rt5658-40pin-compatibility.patch \
+           file://0003-Disable-modules-provided-by-mlnx-ofed.patch \
 "
 
 PATH:prepend = "${STAGING_BINDIR_NATIVE}/kern-tools-tegra:"
